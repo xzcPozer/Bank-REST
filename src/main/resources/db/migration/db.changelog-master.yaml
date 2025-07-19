@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db/migration/001-init-tables.yaml
+  - include:
+      file: db/migration/002-insert-role-table.sql
+  - include:
+      file: db/migration/003-insert-user-table.sql
+  - include:
+      file: db/migration/004-insert-user-role-table.xml
+  - include:
+      file: db/migration/005-insert-card-table.yaml

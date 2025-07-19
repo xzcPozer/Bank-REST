@@ -1,0 +1,38 @@
+services:
+  postgres:
+    container_name: postgres_card_db
+    image: postgres
+    environment:
+      POSTGRES_USER: timur
+      POSTGRES_PASSWORD: timur
+      POSTGRES_DB: bank_db
+    volumes:
+      - pg:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - br-net
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8088:8088
+    environment:
+      SPRING_DATASOURCE_BANK_URL: jdbc:postgresql://postgres:5432/bank_db
+      SPRING_DATASOURCE_BANK_USERNAME: timur
+      SPRING_DATASOURCE_BANK_PASSWORD: timur
+    depends_on:
+      - postgres
+    networks:
+      - br-net
+    restart: unless-stopped
+
+networks:
+  br-net:
+    driver: bridge
+
+volumes:
+  pg:

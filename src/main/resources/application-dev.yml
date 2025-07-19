@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank_db
+    username: timur
+    password: timur
+    driver-class-name: org.postgresql.Driver
+    
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+
+auth:
+  token:
+    jwt-secret: PE+01rgtPbv1Xr4JxgTwcB2oB+m+4NZVD+SO+WBiudE=
+    expiration: 36000000
+
+jasypt:
+  encryptor:
+    secret: mySecretKeys
+    algorithm: PBEWithMD5AndDES
+    salt: fixedsalt
+
+server:
+  port: 8088

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: bank-rest
+  profiles:
+    active: dev
+  liquibase:
+    change-log: classpath:db/migration/db.changelog-master.yaml
+
+springdoc:
+  default-produces-media-type: application/json
+
+server:
+  servlet:
+    context-path: /api/v1/
